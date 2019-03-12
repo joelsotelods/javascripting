@@ -3,7 +3,16 @@
 var ufo_data = data;
 
 
+/// init the page... show all
+
+
+
+
+fill_the_table(ufo_data);
+
+
 var submit = d3.select("#filter-btn");
+var clear_filter = d3.select("#clear-btn");
 
 submit.on("click", function() {
 
@@ -29,12 +38,31 @@ submit.on("click", function() {
     // Test
     console.log(selected_ufo_data);
 
+    fill_the_table(selected_ufo_data);
+
+});
+
+clear_filter.on("click", function() {
+
+    // Prevent the page from refreshing
+    d3.event.preventDefault();
+
+    fill_the_table(ufo_data);
+
+});
+
+
+ 
+
+function fill_the_table(data_to_show){
+
+
     var tbody = d3.select("tbody");
 
     tbody.html("");
 
     // Iterate through each student/grade pair
-    selected_ufo_data.forEach(({datetime, city, state , country, shape, durationMinutes, comments}) => {
+    data_to_show.forEach(({datetime, city, state , country, shape, durationMinutes, comments}) => {
 
     // Append one table row per student/grade
     var row = tbody.append("tr");
@@ -49,7 +77,7 @@ submit.on("click", function() {
     row.append("td").text(comments);
     });
 
-});
+};
 
 
 
