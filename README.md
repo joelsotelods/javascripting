@@ -1,8 +1,7 @@
 # javascripting
 
 
-### Please: NO CALIFICAR
+### Project status: Done with the first part of the proyect.
 
-síl a voy a hacer.. I just need time.
+As an extra added a Date Picker to select the date.
 
-gracias :)

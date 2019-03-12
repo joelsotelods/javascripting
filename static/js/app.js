@@ -5,9 +5,6 @@ var ufo_data = data;
 
 /// init the page... show all
 
-
-
-
 fill_the_table(ufo_data);
 
 
