@@ -5,3 +5,6 @@
 
 As an extra added a Date Picker to select the date.
 
+Page deployed to: https://joelsotelods.github.io/javascripting/
+
+
