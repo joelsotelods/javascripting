@@ -104,9 +104,9 @@ select {
   background-size: cover;
 }
 
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px)  {
+@media only screen and (max-width: 450px)   {
 .hero {  
-  background-image: url("../images/nasa_7.jpg");
+  background-image: url("https://i.pinimg.com/originals/de/20/25/de20255d707331dbc87577c4fb56dd34.jpg");
   background-position: no-repeat top center fixed;
   background-size: cover;
   height: 100%;
