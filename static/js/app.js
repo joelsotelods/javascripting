@@ -19,6 +19,16 @@ var shape_filter = d3.select("#shape_sel");
 var current_working_data = ufo_data;
 
 
+var default_filters = {
+    datetime: "All Data",
+    city: "All Data",
+    state: "All Data",
+    country: "All Data",
+    shape: "All Data"
+  };
+
+var current_filters = default_filters;
+
 date_filter.on("change", function() {
 
     // Prevent the page from refreshing
@@ -32,26 +42,13 @@ date_filter.on("change", function() {
 
     console.log(inputValue);
 
-    if (inputValue == "All Data") {
+    current_filters.datetime = inputValue;
 
-        fill_the_table(ufo_data);
-        get_filter_values(ufo_data);
+    console.log(current_filters);
 
-    } else {
-        // Create a custom filtering function
-        function selectUFO(ufo_sight) {
-            return ufo_sight.datetime == inputValue;
-        }
 
-        // filter() uses the custom function as its argument
-        var selected_ufo_data = ufo_data.filter(selectUFO);
-
-        // Test
-        console.log(selected_ufo_data);
-
-        fill_the_table(selected_ufo_data);
-        //get_filter_values(selected_ufo_data);
-    }
+    filter_data(current_filters);
+    
 
 });
 
@@ -69,26 +66,9 @@ country_filter.on("change", function() {
 
     console.log(inputValue);
 
-    if (inputValue == "All Data") {
+    current_filters.country = inputValue;
 
-        fill_the_table(ufo_data);
-        get_filter_values(ufo_data);
-
-    } else {
-        // Create a custom filtering function
-        function selectUFO(ufo_sight) {
-            return ufo_sight.country == inputValue;
-        }
-
-        // filter() uses the custom function as its argument
-        var selected_ufo_data = ufo_data.filter(selectUFO);
-
-        // Test
-        console.log(selected_ufo_data);
-
-        fill_the_table(selected_ufo_data);
-        //get_filter_values(selected_ufo_data);
-    }
+    filter_data(current_filters);
 
 });
 
@@ -105,26 +85,9 @@ state_filter.on("change", function() {
 
     console.log(inputValue);
 
-    if (inputValue == "All Data") {
+    current_filters.state = inputValue;
 
-        fill_the_table(ufo_data);
-        get_filter_values(ufo_data);
-
-    } else {
-        // Create a custom filtering function
-        function selectUFO(ufo_sight) {
-            return ufo_sight.state == inputValue;
-        }
-
-        // filter() uses the custom function as its argument
-        var selected_ufo_data = ufo_data.filter(selectUFO);
-
-        // Test
-        console.log(selected_ufo_data);
-
-        fill_the_table(selected_ufo_data);
-        //get_filter_values(selected_ufo_data);
-    }
+    filter_data(current_filters);
 
 });
 
@@ -141,26 +104,9 @@ city_filter.on("change", function() {
 
     console.log(inputValue);
 
-    if (inputValue == "All Data") {
+    current_filters.city = inputValue;
 
-        fill_the_table(ufo_data);
-        get_filter_values(ufo_data);
-
-    } else {
-        // Create a custom filtering function
-        function selectUFO(ufo_sight) {
-            return ufo_sight.city == inputValue;
-        }
-
-        // filter() uses the custom function as its argument
-        var selected_ufo_data = ufo_data.filter(selectUFO);
-
-        // Test
-        console.log(selected_ufo_data);
-
-        fill_the_table(selected_ufo_data);
-        //get_filter_values(selected_ufo_data);
-    }
+    filter_data(current_filters);
 
 });
 
@@ -177,26 +123,9 @@ shape_filter.on("change", function() {
 
     console.log(inputValue);
 
-    if (inputValue == "All Data") {
+    current_filters.shape = inputValue;
 
-        fill_the_table(ufo_data);
-        get_filter_values(ufo_data);
-
-    } else {
-        // Create a custom filtering function
-        function selectUFO(ufo_sight) {
-            return ufo_sight.shape == inputValue;
-        }
-
-        // filter() uses the custom function as its argument
-        var selected_ufo_data = ufo_data.filter(selectUFO);
-
-        // Test
-        console.log(selected_ufo_data);
-
-        fill_the_table(selected_ufo_data);
-        //get_filter_values(selected_ufo_data);
-    }
+    filter_data(current_filters);
 
 });
 
@@ -205,12 +134,114 @@ clear_filter.on("click", function() {
     // Prevent the page from refreshing
     d3.event.preventDefault();
 
+    current_working_data = ufo_data;
+    current_filters = default_filters;
+
     fill_the_table(ufo_data);
     get_filter_values(ufo_data);
 
 });
 
+function filter_data(current_filter_arr){
 
+    input_datetime = current_filter_arr.datetime;
+    input_city = current_filter_arr.city;
+    input_state = current_filter_arr.state;
+    input_country = current_filter_arr.country;
+    input_shape = current_filter_arr.shape;
+
+    console.log(current_filter_arr);
+
+    var filtered_ufo_data = ufo_data;
+
+
+    if (input_datetime != "All Data") {
+        // Create a custom filtering function
+        function selectUFO(ufo_sight) {
+            return ufo_sight.datetime == input_datetime;
+        }
+
+        // filter() uses the custom function as its argument
+        tmp_data = filtered_ufo_data.filter(selectUFO);
+
+        filtered_ufo_data = tmp_data;
+        // Test
+        console.log(filtered_ufo_data);
+
+
+    }
+
+    if (input_city != "All Data") {
+        // Create a custom filtering function
+        function selectUFO(ufo_sight) {
+            return ufo_sight.city == input_city;
+        }
+
+        // filter() uses the custom function as its argument
+        tmp_data = filtered_ufo_data.filter(selectUFO);
+
+        filtered_ufo_data = tmp_data;
+        // Test
+        console.log(filtered_ufo_data);
+
+
+    }
+
+    if (input_state != "All Data") {
+        // Create a custom filtering function
+        function selectUFO(ufo_sight) {
+            return ufo_sight.state == input_state;
+        }
+
+        // filter() uses the custom function as its argument
+        tmp_data = filtered_ufo_data.filter(selectUFO);
+
+        filtered_ufo_data = tmp_data;
+        // Test
+        console.log(filtered_ufo_data);
+
+
+    }
+
+    if (input_country != "All Data") {
+        // Create a custom filtering function
+        function selectUFO(ufo_sight) {
+            return ufo_sight.country == input_country;
+        }
+
+        // filter() uses the custom function as its argument
+        tmp_data = filtered_ufo_data.filter(selectUFO);
+
+        filtered_ufo_data = tmp_data;
+        // Test
+        console.log(filtered_ufo_data);
+
+
+    }
+
+    if (input_shape != "All Data") {
+        // Create a custom filtering function
+        function selectUFO(ufo_sight) {
+            return ufo_sight.shape == input_shape;
+        }
+
+        // filter() uses the custom function as its argument
+        tmp_data = filtered_ufo_data.filter(selectUFO);
+
+        filtered_ufo_data = tmp_data;
+        // Test
+        console.log(filtered_ufo_data);
+
+
+    }
+
+
+    fill_the_table(filtered_ufo_data);
+
+    // fill_the_table(ufo_data);
+    //get_filter_values(filtered_ufo_data);
+
+}
  
 
 function fill_the_table(data_to_show){
@@ -337,15 +368,4 @@ function get_filter_values(data_to_show){
 
 
 };
-
-
-
-
-
-
-
-// // Create a new element
-// var li1 = d3.select("select").append("option");
-// li1.text("sup");
-
 
