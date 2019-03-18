@@ -6,27 +6,15 @@
   <title>UFO Finder</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- this is all just for the data picker -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
-
-  <script type="text/javascript">
-  $(document).ready(function() {
-              $("#datetime").datepicker({
-                  format: "m/d/yyyy"
-              });
-          });
-</script>
-<!-- end of Date picker code -->
 
 
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
   <link rel="stylesheet" href="static/css/style.css">
+
+  
+  <script src="https://d3js.org/d3.v5.min.js"></script>
 </head>
 
 <body>
@@ -55,17 +43,42 @@
                   <div class="form-group">
                     <ul class="list-group" id="filters">
                       <li class="filter list-group-item">
-                        <label for="date">Enter a Date</label>
-                        <!-- <input class="form-control" id="datetime" type="text" placeholder="1/11/2011"> -->
-                        <div class="input-group" id="datepicker">
-                          <input type="text" class="form-control" data-bind="value: startDate, event: {change: savePerishableDate}" id="datetime"/>
-                        </div>
+                        <label for="date_sel">Enter a Date</label>
+                        <!-- <input class="form-control" id="datetime" type="text" placeholder="1/11/2011">  -->
+                        <select class="form-control" id="date_sel" type="submit">
+                        </select>
+                        
+                        <br>
+                        
+                        <label for="country_sel">Select Country:</label>
+                        <select class="form-control" id="country_sel" type="submit">
+                        </select>
+
+                        <br>
+                        
+                        <label for="state_sel">Select State:</label>
+                        <select class="form-control" id="state_sel" type="submit">
+                        </select>
+
+                        <br>
+                        
+                        <label for="city_sel">Select City:</label>
+                        <select class="form-control" id="city_sel" type="submit">
+                        </select>
+
+                        <br>
+                        
+                        <label for="shape_sel">Select a Shape:</label>
+                        <select class="form-control" id="shape_sel" type="submit">
+                        </select>
+
                       </li>
                     </ul>
+
+                    
+
                   </div>
-                  <div class="form-group text-center">
-                    <button id="filter-btn" type="submit" class="btn btn-default">Filter Table</button>
-                  </div>
+ 
                   <div class="form-group text-center">
                     <button id="clear-btn" type="submit" class="btn btn-default">Clear Filters</button>
                   </div>
@@ -101,7 +114,9 @@
     </footer>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
+
   <script src="static/js/data.js"></script>
+
   <script src="static/js/app.js"></script>
 </body>
 
