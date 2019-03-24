@@ -1,10 +1,19 @@
-# javascripting
+# UFO Finder!!
 
 
-### Project status: Done with the first part of the proyect.
-
-As an extra added a Date Picker to select the date.
+## Deployment
 
 Page deployed to: https://joelsotelods.github.io/javascripting/
 
+
+## Screenshots
+
+### Home
+
+![](images/home_1.png)
+![](images/home_2.png)
+
+#### Filters:
+![](images/home_3.png)
+![](images/home_4.png)
 
